@@ -24,21 +24,21 @@ include(cmake/std.cmake)
 # Partie à mettre à jour manuellement
 # Liste des fichiers sources des exercices
 set(PROJECT_FILES
-		${SRC_DIR}/exo1.cppm
-		${SRC_DIR}/exo2.cppm
-		${SRC_DIR}/exo3.cppm
-		${SRC_DIR}/exo4.cppm
-		${SRC_DIR}/exo5.cppm
-		${SRC_DIR}/exo6.cppm
-		${SRC_DIR}/exo7.cppm
-		${SRC_DIR}/exo8.cppm
-		${SRC_DIR}/exo9.cppm
-		${SRC_DIR}/exo10/encoder.cppm
-		${SRC_DIR}/exo10/encoderv1.cppm
-		${SRC_DIR}/exo10/encoderv2.cppm
-		${SRC_DIR}/exo10/encoderv3.cppm
-		${SRC_DIR}/exo10/lzw.cppm
-		${SRC_DIR}/exo10/app.cppm
+		${SRC_DIR}/exo1.ixx
+		${SRC_DIR}/exo2.ixx
+		${SRC_DIR}/exo3.ixx
+		${SRC_DIR}/exo4.ixx
+		${SRC_DIR}/exo5.ixx
+		${SRC_DIR}/exo6.ixx
+		${SRC_DIR}/exo7.ixx
+		${SRC_DIR}/exo8.ixx
+		${SRC_DIR}/exo9.ixx
+		${SRC_DIR}/exo10/encoder.ixx
+		${SRC_DIR}/exo10/encoderv1.ixx
+		${SRC_DIR}/exo10/encoderv2.ixx
+		${SRC_DIR}/exo10/encoderv3.ixx
+		${SRC_DIR}/exo10/lzw.ixx
+		${SRC_DIR}/exo10/app.ixx
 )
 # Liste des fichiers sources des tests unitaires
 set(TEST_FILES
