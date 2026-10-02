@@ -11,7 +11,33 @@ export namespace exo2 {
         };
 
         Vector(const Vector& vector): x{vector.x}, y{vector.y}, z{vector.z} {
-            std::cout << "Vector(vector) called" << std::endl;
+            std::cout << "Vector(const Vector&) copy called" << std::endl;
+        }
+
+        Vector(Vector&& vector) noexcept: x{vector.x}, y{vector.y}, z{vector.z} {
+            vector.x = 0.0;
+            vector.y = 0.0;
+            vector.z = 0.0;
+            std::cout << "Vector(Vector&&) move called" << std::endl;
+        }
+
+        Vector& operator=(const Vector& vector) {
+            x = vector.x;
+            y = vector.y;
+            z = vector.z;
+            std::cout << "operator=(const Vector&) copy called" << std::endl;
+            return *this;
+        }
+
+        Vector& operator=(Vector&& vector) noexcept {
+            x = vector.x;
+            y = vector.y;
+            z = vector.z;
+            vector.x = 0.0;
+            vector.y = 0.0;
+            vector.z = 0.0;
+            std::cout << "operator=(Vector&&) move called" << std::endl;
+            return *this;
         }
 
         void Homothety(const double value) {
@@ -62,6 +88,11 @@ export namespace exo2 {
             std::cout << v1.ToString() << std::endl;
             v1.Sum2(v2);
             std::cout << v1.ToString() << std::endl;
+
+            auto copy = v1;
+            auto moved = std::move(copy);
+            std::cout << "moved: " << moved.ToString() << std::endl;
+            std::cout << "source after move: " << copy.ToString() << std::endl;
         }
     };
 }

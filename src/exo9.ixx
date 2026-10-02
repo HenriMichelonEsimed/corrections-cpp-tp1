@@ -126,6 +126,30 @@ export namespace exo9 {
             return tree.Contains({key});
         }
 
+        // Renvoie éventuellement une référence vers la valeur associée à `key`.
+        std::optional<std::reference_wrapper<V>> Find(const K& key) {
+            V* result = nullptr;
+            tree.Traversal([&](MapEntry<K, V>& entry) {
+                if (entry.key == key) {
+                    result = &entry.value;
+                    return true;
+                }
+                return false;
+            });
+            if (result == nullptr) {
+                return std::nullopt;
+            }
+            return std::ref(*result);
+        }
+
+        // Même recherche avec une erreur explicite grâce à std::expected.
+        std::expected<std::reference_wrapper<V>, std::string> FindExpected(const K& key) {
+            if (auto result = Find(key)) {
+                return *result;
+            }
+            return std::unexpected(std::string{"Key not found"});
+        }
+
         // Renvoie la valeur associée à la clé `key`
         V& Get(const K& key) {
             if (!tree.Contains({key})) {

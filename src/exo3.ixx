@@ -10,24 +10,32 @@ export namespace exo3 {
         double z{};
 
         // Les opérateurs membres ont un seul paramètre
-        Vector operator +(const Vector& vector) const {
+        constexpr Vector operator +(const Vector& vector) const {
             return Vector{x + vector.x, y + vector.y, z + vector.z};
         }
 
         // Les opérateurs membres ont un seul paramètre
-        Vector operator *(const double value) const {
+        constexpr Vector operator *(const double value) const {
             return Vector{x * value, y * value, z * value};
         }
 
         // Les opérateurs "friend" ont deux paramètres
-        friend bool operator ==(const Vector& vector1, const Vector& vector2) {
+        friend constexpr bool operator ==(const Vector& vector1, const Vector& vector2) {
             return vector1.x == vector2.x && vector1.y == vector2.y && vector1.z == vector2.z;
+        }
+
+        constexpr double LengthSquared() const {
+            return x * x + y * y + z * z;
         }
 
         std::string ToString() const {
             return std::format("({0:.2f},{1:.2f},{2:.2f})", x, y, z);
         }
     };
+
+    consteval Vector CreateUnitX() {
+        return Vector{1.0, 0.0, 0.0};
+    }
 
     class Application {
     public:
