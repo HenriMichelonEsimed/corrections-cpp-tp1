@@ -66,6 +66,7 @@ target_sources(${PROJECT_NAME}
 	FILES
 		${PROJECT_FILES}
 )
+target_link_libraries(${PROJECT_NAME} PRIVATE std-cxx-modules)
 
 # Exécutable pour les tests unitaires
 add_executable(tests ${TEST_FILES})
@@ -75,7 +76,7 @@ target_sources(tests
 	FILES
 		${PROJECT_FILES}
 )
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+target_link_libraries(tests PRIVATE std-cxx-modules Catch2::Catch2WithMain)
 
 # Configuration automatique pour CTest
 include(CTest)

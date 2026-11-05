@@ -10,5 +10,5 @@ TEST_CASE("Exo6", "[VectorUtils]") {
     const auto result = std::vector<int>{1, 2, 4, 5, 7, 8, 9};
     REQUIRE(vec == result);
     const auto vecConst = vec;
-    REQUIRE(VectorUtils::CountGreatersThan(vecConst, 5) == 3);
+    REQUIRE(VectorUtils::CountGreaterThan(vecConst, 5) == 3);
 }
