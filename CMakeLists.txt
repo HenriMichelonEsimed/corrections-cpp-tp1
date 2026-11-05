@@ -19,6 +19,7 @@ set(TESTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests)
 
 # Pour "import std"
 include(cmake/std.cmake)
+include(cmake/compile_options.cmake)
 
 #######################################################
 # Partie à mettre à jour manuellement
@@ -65,7 +66,7 @@ target_sources(${PROJECT_NAME}
 	FILES
 		${PROJECT_FILES}
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE std-cxx-modules)
+compile_options(${PROJECT_NAME})
 
 # Exécutable pour les tests unitaires
 add_executable(tests ${TEST_FILES})
