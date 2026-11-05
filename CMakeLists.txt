@@ -55,7 +55,6 @@ add_executable(${PROJECT_NAME}
 		${SRC_DIR}/main.cpp
 )
 #######################################################
-
 # Pour les tests unitaires
 include(cmake/catch2.cmake)
 
