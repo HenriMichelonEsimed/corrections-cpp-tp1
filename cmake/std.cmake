@@ -77,8 +77,6 @@ endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	add_compile_options(-stdlib=libc++)
 	add_link_options(-stdlib=libc++)
-    # Keep the runtime consistent with the libc++ headers and std module even
-    # when the system shared libc++ belongs to an older LLVM installation.
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
         add_link_options(-static-libstdc++)
     endif()
@@ -123,7 +121,7 @@ if(MSVC)
     endif()
 else()
     target_compile_options(std-cxx-modules
-            PRIVATE
+            PUBLIC
             -Wno-reserved-module-identifier
             -Wno-reserved-user-defined-literal
     )
